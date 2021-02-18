@@ -1,0 +1,1 @@
+        <footer><p>&#169; Copyright Veterinary Practice 2021</p></footer>
