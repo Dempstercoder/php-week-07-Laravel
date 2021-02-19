@@ -1,29 +1,29 @@
 @extends("app")
 
-@section("page_title")
-            <h1>Welcome to Bristol Vets</h1>
-@endsection
-
-
-
-@section("content")
+{{-- this for each goes straight from the model to the view --}}
     {{-- loop over all of the owner --}}
     {{-- each owner object goes into $owner--}}
-    @foreach (App\Models\Owners::all() as $owner)
+{{-- @section("content")
+    @foreach (App\Models\Owner::all() as $owner)
       
         <a href="/owners/{{ $owner->id }}">
 
-          {{-- output the owner title --}}
-            <h5>{{ $owner->fullName() }}</h5>
+            <h5>{{ $owner->fullName() }}</h5> 
         </a>
     @endforeach
-@endsection
+@endsection --}}
+{{-- <h5>{{ $owner->fullName() }}</h5>  <--- this outputs the owner title --}}
 
 
-@foreach ($owner as $owner)
+{{-- this for each goes to the controller and then to the view--}}
+@foreach ($bananas as $owner) {{-- owners should be plural as it is coming from the controller --}}
     <a href="/owners/{{ $owner->id }}">
 
         {{-- output the owner title --}}
-        <h5>{{ $owner->fullName() }}</h5>
+        <h3>{{ $owner->fullName() }}</h3>
     </a>
 @endforeach
+
+@section("page_title")
+            <h1>Welcome to Bristol Vets</h1>
+@endsection
