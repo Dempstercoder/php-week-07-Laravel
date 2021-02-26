@@ -5,9 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Owners extends Model
+class Owner extends Model
 {
     use HasFactory;
+
+    protected $fillable = ["first_name", "last_name","address_1", "address_2", "town", "postcode", "telephone", "email" ];
 
 
     public function fullName()
@@ -19,6 +21,22 @@ class Owners extends Model
     {
        return "{$this->address_1} {$this->address_2} {$this->town} {$this->postcode}";
     }
+
+    // This hows in human-readable form, how long ago a blog-post was posted
+    public function relativeDate()
+    {
+    return $this->created_at->diffForHumans();
+    }
+
+
+    public function animals()
+    {
+    // use hasMany relationship method
+    return $this->hasMany(Animal::class);
+    }
+    // Now we can easily access a collection of Animal objects for an owner object instance
+    // using its new Animals property.
+
 
     public static function haveWeBananas($number)
     {
